@@ -1,0 +1,211 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>System Information Report For CatalanCrusher</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <style>
+            :root {
+                --primary: #0078d7;
+                --bg: #f4f7fb;
+                --text: #333;
+                --card-bg: #fff;
+                --shadow: 0 2px 8px rgba(0,0,0,0.08);
+            }
+            body {
+                font-family: "Segoe UI", Tahoma, sans-serif;
+                background: var(--bg);
+                color: var(--text);
+                margin: 0;
+                padding: 0;
+            }
+            header {
+                background: var(--primary);
+                color: white;
+                padding: 20px 40px;
+                text-align: center;
+                box-shadow: var(--shadow);
+            }
+            header h1 {
+                margin: 0;
+                font-size: 1.8em;
+            }
+            main {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+                gap: 20px;
+                padding: 30px;
+            }
+            .card {
+                background: var(--card-bg);
+                border-radius: 10px;
+                box-shadow: var(--shadow);
+                padding: 20px;
+                transition: transform 0.2s;
+            }
+            .card:hover {
+                transform: translateY(-3px);
+            }
+            h2 {
+                color: var(--primary);
+                font-size: 1.2em;
+                border-bottom: 2px solid var(--primary);
+                padding-bottom: 5px;
+                margin-bottom: 15px;
+            }
+            pre {
+                background: #f8f9fb;
+                padding: 10px;
+                border-radius: 6px;
+                overflow-x: auto;
+                font-size: 0.9em;
+            }
+            canvas {
+                width: 100%;
+                max-height: 250px;
+            }
+            footer {
+                text-align: center;
+                padding: 20px;
+                font-size: 0.85em;
+                color: #777;
+            }
+            .download-btn {
+                display: inline-block;
+                background: var(--primary);
+                color: white;
+                padding: 10px 18px;
+                border-radius: 6px;
+                text-decoration: none;
+                font-weight: 500;
+                box-shadow: var(--shadow);
+                transition: background 0.2s ease-in-out;
+            }
+            .download-btn:hover {
+                background: #005fa3;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>System Information Report For CatalanCrusher</h1>
+            <p>Generated 11/04/25 03:44:15 PM UTC, by mqureshi</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <h2>System Uptime</h2>
+                <pre> 15:44:23 up 23:01,  1 user,  load average: 0.18, 0.07, 0.05</pre>
+            </div>
+
+            <div class="card">
+                <h2>Disk Space Utilization</h2>
+                <pre>Filesystem      Size  Used Avail Use% Mounted on
+none            3.9G     0  3.9G   0% /usr/lib/modules/6.6.87.2-microsoft-standard-WSL2
+none            3.9G  4.0K  3.9G   1% /mnt/wsl
+drivers         459G  184G  276G  41% /usr/lib/wsl/drivers
+/dev/sdd       1007G   21G  936G   3% /
+none            3.9G  744K  3.8G   1% /mnt/wslg
+none            3.9G     0  3.9G   0% /usr/lib/wsl/lib
+rootfs          3.8G  2.7M  3.8G   1% /init
+none            3.9G  844K  3.8G   1% /run
+none            3.9G     0  3.9G   0% /run/lock
+none            3.9G     0  3.9G   0% /run/shm
+none            3.9G   76K  3.9G   1% /mnt/wslg/versions.txt
+none            3.9G   76K  3.9G   1% /mnt/wslg/doc
+C:\             459G  184G  276G  41% /mnt/c
+snapfuse         56M   56M     0 100% /snap/core18/2952
+snapfuse         51M   51M     0 100% /snap/snapd/25577
+snapfuse        322M  322M     0 100% /snap/vlc/3777
+tmpfs           779M   24K  779M   1% /run/user/1000</pre>
+                <canvas id="diskChart"></canvas>
+            </div>
+
+            <div class="card">
+                <h2>Memory Usage</h2>
+                <pre>               total        used        free      shared  buff/cache   available
+Mem:           7.6Gi       1.4Gi       5.7Gi       7.8Mi       675Mi       6.2Gi
+Swap:          2.0Gi          0B       2.0Gi</pre>
+                <canvas id="memoryChart"></canvas>
+            </div>
+
+            <div class="card">
+                <h2>Home Directory Sizes (Top 5)</h2>
+                <pre>15G	/home/mqureshi</pre>
+                <canvas id="homeChart"></canvas>
+            </div>
+        </main>
+
+        <footer>
+            <button class="download-btn" onclick="downloadReport()"> ⬇ Download Report</button>
+            <p>&copy; 2025 System Dashboard | Generated by sysinfo_pro.sh</p>
+        </footer>
+
+        <script>
+            // -------- Chart.js Charts --------
+            new Chart(document.getElementById('diskChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Used (GB)', 'Available (GB)'],
+                    datasets: [{
+                        data: [20.1868, 935.452],
+                        backgroundColor: ['#0078d7', '#cfd8dc']
+                    }]
+                },
+                options: {
+                    plugins: {
+                        title: { display: true, text: 'Disk Usage (Root)' },
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById('memoryChart'), {
+                type: 'pie',
+                data: {
+                    labels: ['Used (MB)', 'Free (MB)'],
+                    datasets: [{
+                        data: [1420, 6006],
+                        backgroundColor: ['#ff6b6b', '#51cf66']
+                    }]
+                },
+                options: {
+                    plugins: {
+                        title: { display: true, text: 'Memory Usage' },
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById('homeChart'), {
+                type: 'bar',
+                data: {
+                    labels: ["mqureshi"],
+                    datasets: [{
+                        label: 'Size (MB)',
+                        data: [15360],
+                        backgroundColor: '#74c0fc'
+                    }]
+                },
+                options: {
+                    plugins: {
+                        title: { display: true, text: 'Top 5 Home Directories' }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, title: { display: true, text: 'MB' } }
+                    }
+                }
+            });
+
+            // -------- Download Function --------
+            function downloadReport() {
+                const blob = new Blob([document.documentElement.outerHTML], {type: 'text/html'});
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'system_report.html';
+                link.click();
+                URL.revokeObjectURL(link.href);
+            }
+        </script>
+    </body>
+    </html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>System Information Dashboard</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+    :root {
+      --primary: #0078d7;
+      --accent: #00c6ff;
+      --bg: #f4f7fb;
+      --text: #222;
+      --card-bg: rgba(255, 255, 255, 0.8);
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: relative;
+      height: 80vh;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.4), rgba(0,0,0,0.6)),
+                  url('https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?auto=format&fit=crop&w=1400&q=80')
+                  center/cover no-repeat;
+      box-shadow: var(--shadow);
+    }
+
+    header h1 {
+      font-size: 2.8em;
+      font-weight: 600;
+      margin-bottom: 0.3em;
+    }
+
+    header p {
+      font-size: 1.2em;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(to bottom, #f9fbfd, #eef3f9);
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      padding: 40px 50px;
+      max-width: 700px;
+      margin-top: -80px;
+      z-index: 10;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    pre {
+      background: rgba(0, 0, 0, 0.05);
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 0.9em;
+      text-align: left;
+      overflow-x: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      color: white;
+      padding: 14px 32px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.05em;
+      box-shadow: 0 6px 15px rgba(0, 120, 215, 0.3);
+      transition: all 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 120, 215, 0.4);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 60px;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .feature {
+      background: var(--card-bg);
+      backdrop-filter: blur(6px);
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: var(--shadow);
+      text-align: left;
+      transition: transform 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature h3 {
+      color: var(--primary);
+      margin-top: 0;
+    }
+
+    footer {
+      background: #fff;
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9em;
+      color: #777;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+      .card {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Linux System Report Generator</h1>
+    <p>Generate beautiful, interactive HTML reports of your system performance and health.</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Welcome!</h2>
+      <p>This tool collects your system’s hardware, disk, memory, and uptime details — then produces a clear, visual report in HTML format using <strong>Chart.js</strong>.</p>
+      <p>To get started, complete the following:</p>
+        <p>Download <a href="sysinfo_pro.sh">this</a> shell script and run the following commands after navigating to the appropriate directory: </p>
+        <pre>
+        <code>chmod +x sysinfo_pro.sh </code>
+        <code>./sysinfo_pro.sh > sysinfo_pro.html </code>
+        </pre>
+      <p>Once generated, open the HTML file in your browser to explore interactive charts and metrics.</p>
+      <a class="btn" href="sysinfo_pro.html">View Sample Report</a>
+    </div>
+
+    <section class="features">
+      <div class="feature">
+        <h3>📊 Disk & Memory Usage</h3>
+        <p>Visualize storage and memory consumption instantly with clean interactive charts.</p>
+      </div>
+      <div class="feature">
+        <h3>🕒 System Uptime</h3>
+        <p>Quickly check how long your system has been running and monitor system load.</p>
+      </div>
+      <div class="feature">
+        <h3>🏠 Home Directories</h3>
+        <p>Identify which user directories occupy the most space effortlessly.</p>
+      </div>
+      <div class="feature">
+        <h3>💾 Export Anywhere</h3>
+        <p>Download or print your generated HTML report for documentation and audits.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Linux System Report Generator | Powered by Bash + HTML/CSS + Chart.js</p>
+  </footer>
+</body>
+</html>
