@@ -266,7 +266,7 @@ write_html_page () {
                     }
                 }
             });
-            
+
             // -------- Download Function --------
             function downloadReport() {
                 const blob = new Blob([document.documentElement.outerHTML], {type: 'text/html'});
