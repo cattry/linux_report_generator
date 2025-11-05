@@ -40,3 +40,47 @@
   0.00    0.000000           0         1           rseq
 ------ ----------- ----------- --------- --------- ----------------
 100.00    0.717947        1165       616        44 total
+
+
+
+
+| **Syscall**         | **Function**                                                   |
+| ------------------- | -------------------------------------------------------------- |
+| **wait4**           | Waits for a child process to finish or change state.           |
+| **rt_sigprocmask**  | Blocks or unblocks specific signals for the process.           |
+| **clone**           | Creates a new process or thread.                               |
+| **read**            | Reads data from a file descriptor.                             |
+| **rt_sigaction**    | Installs or retrieves a signal handler.                        |
+| **close**           | Closes an open file descriptor.                                |
+| **openat**          | Opens a file relative to a directory file descriptor.          |
+| **mmap**            | Maps files or memory into the process’s address space.         |
+| **pipe2**           | Creates a unidirectional data channel (pipe) for processes.    |
+| **fstat**           | Retrieves file metadata from a file descriptor.                |
+| **newfstatat**      | Gets file information relative to a directory file descriptor. |
+| **rt_sigreturn**    | Returns from a signal handler to resume normal execution.      |
+| **lseek**           | Moves the file read/write offset to a new position.            |
+| **fcntl**           | Performs control operations on file descriptors.               |
+| **brk**             | Changes the end of the process’s data segment (heap size).     |
+| **mprotect**        | Sets memory protection (read/write/execute) for a region.      |
+| **prlimit64**       | Gets or sets resource limits (e.g., memory, open files).       |
+| **ioctl**           | Performs device-specific input/output operations.              |
+| **getppid**         | Returns the parent process ID.                                 |
+| **munmap**          | Unmaps a previously mapped memory region.                      |
+| **getgid**          | Returns the real group ID of the calling process.              |
+| **uname**           | Returns system information (kernel name, version, etc.).       |
+| **getpid**          | Returns the process ID of the calling process.                 |
+| **getuid**          | Returns the real user ID of the calling process.               |
+| **geteuid**         | Returns the effective user ID of the calling process.          |
+| **getegid**         | Returns the effective group ID of the calling process.         |
+| **dup2**            | Duplicates a file descriptor to a specific target descriptor.  |
+| **write**           | Writes data to a file descriptor.                              |
+| **futex**           | Provides fast user-space locking for thread synchronization.   |
+| **getrandom**       | Returns random bytes from the kernel entropy pool.             |
+| **access**          | Checks a file’s accessibility (read, write, execute).          |
+| **getpgrp**         | Returns the process group ID of the calling process.           |
+| **pread64**         | Reads data from a file at a specific offset.                   |
+| **execve**          | Executes a new program, replacing the current process.         |
+| **arch_prctl**      | Sets or gets architecture-specific thread state.               |
+| **set_tid_address** | Registers the address where thread ID is stored.               |
+| **set_robust_list** | Sets the list of robust futexes for the thread.                |
+| **rseq**            | Registers a restartable sequences structure for optimization.  |
